@@ -130,9 +130,6 @@ fortunes = {
     49: "Obama Won't Care",
     50: "Obama Will Care"
 }
-# Source - https://stackoverflow.com/a/1580250
-# Posted by Cat Plus Plus
-# Retrieved 2026-07-06, License - CC BY-SA 2.5
 
 datetime.datetime(2026, 8, 9) - datetime.datetime.now()
 datetime.timedelta(2, 5274, 16000)
@@ -156,6 +153,9 @@ DRPEPPER_IMG = os.path.join(BASE_DIR, "assets/drpepper.png")
 
 HOMO_WIN_IMG = os.path.join(HOMO_GIF_DIR, "homowin.gif")
 HOMO_FAIL_IMG = os.path.join(HOMO_GIF_DIR, "homofail.gif")
+
+DED = os.path.join(BASE_DIR, "assests/dedoralive/died.gif")
+ALIVE = os.path.join(BASE_DIR, "assests/dedoralive/lived.gif")
 
 BUG_LOG_FILE = os.path.join(BASE_DIR, "buglist.txt")
 INSTANCE_LOCK_PORT = 53183
@@ -663,11 +663,14 @@ async def ban(interaction: discord.Interaction, user: discord.User):
 
 
     if random.randint(1,6) == 1:
+        return await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
+        await asyncio.sleep(6)
         await member.ban(reason="BANG")
-        return await interaction.response.send_message("BANG", ephemeral=True)
-    else:
-      return await interaction.response.send_message("safe", ephemeral=True)
 
+
+    else:
+        return await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
+    await asyncio.sleep(5.2)
 
 
 @bot.tree.command(name="help", description="a quick overview of walter (I ADVISE AGAINST USING THIS COMMAND.)")
