@@ -106,7 +106,23 @@ fortunes = {
     41: "im in your house",
     42: "Czechoslovakia will be reunited on may 16th",
     43: "October is the month of gratitude",
-    44: """My name is Walter Hartwell White. I live at 308 Negra Arroyo Lane, Albuquerque, New Mexico, 87104. This is my confession. If you're watching this tape, I'm probably dead, murdered by my brother-in-law Hank Schrader. Hank has been building a meth empire for over a year now and using me as his chemist. Shortly after my 50th birthday, Hank came to me with a rather, shocking proposition. He asked that I use my chemistry knowledge to cook methamphetamine, which he would then sell using his connections in the drug world. Connections that he made through his career with the DEA. I was... astounded, I... I always thought that Hank was a very moral man and I was... thrown, confused, but I was also particularly vulnerable at the time, something he knew and took advantage of. I was reeling from a cancer diagnosis that was poised to bankrupt my family. Hank took me on a ride along, and showed me just how much money even a small meth operation could make. And I was weak. I didn't want my family to go into financial ruin so I agreed. Every day, I think back at that moment with regret. I quickly realized that I was in way over my head, and Hank had a partner, a man named Gustavo Fring, a businessman. Hank essentially sold me into servitude to this man, and when I tried to quit, Fring threatened my family. I didn't know where to turn. Eventually, Hank and Fring had a falling out. From what I can gather, Hank was always pushing for a greater share of the business, to which Fring flatly refused to give him, and things escalated. Fring was able to arrange, uh I guess I guess you call it a "hit" on my brother-in-law, and failed, but Hank was seriously injured, and I wound up paying his medical bills which amounted to a little over $177,000. Upon recovery, Hank was bent on revenge, working with a man named Hector Salamanca, he plotted to kill Fring, and did so. In fact, the bomb that he used was built by me, and he gave me no option in it..""",
+    44: """My name is Walter Hartwell White. I live at 308 Negra Arroyo Lane, Albuquerque, New Mexico, 87104. 
+    This is my confession. If you're watching this tape, I'm probably dead, murdered by my brother-in-law Hank Schrader. 
+    Hank has been building a meth empire for over a year now and using me as his chemist. Shortly after my 50th birthday, 
+    Hank came to me with a rather, shocking proposition. He asked that I use my chemistry knowledge to cook methamphetamine, 
+    which he would then sell using his connections in the drug world. Connections that he made through his career with the DEA. 
+    I was... astounded, I... I always thought that Hank was a very moral man and I was... thrown, confused, but I was 
+    also particularly vulnerable at the time, something he knew and took advantage of. I was reeling from a cancer 
+    diagnosis that was poised to bankrupt my family. Hank took me on a ride along, and showed me just how much money 
+    even a small meth operation could make. And I was weak. I didn't want my family to go into financial ruin so I agreed. 
+    Every day, I think back at that moment with regret. I quickly realized that I was in way over my head, and Hank had 
+    a partner, a man named Gustavo Fring, a businessman. Hank essentially sold me into servitude to this man, and when I 
+    tried to quit, Fring threatened my family. I didn't know where to turn. Eventually, Hank and Fring had a falling out. 
+    From what I can gather, Hank was always pushing for a greater share of the business, to which Fring flatly refused to 
+    give him, and things escalated. Fring was able to arrange, uh I guess I guess you call it a "hit" on my brother-in-law, 
+    and failed, but Hank was seriously injured, and I wound up paying his medical bills which amounted to a little over 
+    $177,000. Upon recovery, Hank was bent on revenge, working with a man named Hector Salamanca, he plotted to kill Fring,
+     and did so. In fact, the bomb that he used was built by me, and he gave me no option in it..""",
     45: "Beware of flying bricks",
     46: "Beware of falling anvils, carry an umbrella.",
     47: "Wake up, the matrix has you.",
@@ -450,17 +466,6 @@ async def handle_message(message):
 
 
 
-#do i use a genetic reinforcement model to have walter take the text of every message and see if a :3 is intentoinal rather than this?
-# pros:
-#high effort = funny
-#cons:
-#overcomplicated
-#unsustainable
-#expsensive
-#five minutes of funny
-
-
-
 
 
 # ============================================================
@@ -665,13 +670,18 @@ async def ban(interaction: discord.Interaction, user: discord.User):
 
 
 
-@bot.tree.command(name="help", description="a quick overveiw of walter (I ADVISE AGAINST USING THIS COMMAND.)")
+@bot.tree.command(name="help", description="a quick overview of walter (I ADVISE AGAINST USING THIS COMMAND.)")
 async def help(interaction: discord.Interaction):
-  return await interaction.response.send_message("If you say :3 or something along the lines of that or uwu Walter freaks the hell out. saying soda, walter/waltuh, and i think some others he has some responses. /confess does... stuff. and /imnotgayiswear makes walter ignore you /nvmimgay undos this.", ephemeral=True)
+  return await interaction.response.send_message("If you say :3 or something along the lines of that or uwu Walter "
+                                                 "freaks the hell out. saying soda, walter/waltuh, and i think some "
+                                                 "others he has some responses. /confess does... stuff. and /imnotgayiswear "
+                                                 "makes walter ignore you /nvmimgay undos this.", ephemeral=True)
 
 @bot.tree.command (name="whatsnew", description= "patch notes for walter")
 async def whatsnew(interaction: discord.Interaction):
-  return await interaction.response.send_message("version 4.3: Removed twinktext, added cookie command, added more variation to walters response images, changed priorty of walter responses, improved backend readability.")
+  return await interaction.response.send_message("version 4.3: Removed twinktext, added cookie command, added more "
+                                                 "variation to walters response images, changed priorty of walter "
+                                                 "responses, improved backend readability.")
 
 
 print("starting walter...")
@@ -684,8 +694,8 @@ bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GqWN-R.tgfQRjT-77UzLcTlEUq2HvFgZjYrUmDGfc-G-
 
 
 #i am aware this nearly doubles the file size and does nothing. dont try to remove it.
-theentirebeemoviescript = {"""According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too
-small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't
+theentirebeemoviescript = {"""According to all known laws of aviation, there is no way a bee should be able to fly. 
+Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't
 care what humans think is impossible. Yellow, black. Yellow, black. Yellow, black. Yellow, black.
 Ooh, black and yellow! Let's shake it up a little. Barry! Breakfast is ready! Ooming! Hang on a
 second. Hello? - Barry? - Adam? - Oan you believe this is happening? - I can't. I'll pick you up.
