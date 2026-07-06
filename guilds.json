@@ -1,0 +1,111 @@
+{
+    "1392588592068427808": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": [
+            1211075046001475626,
+            752796182983737356
+        ]
+    },
+    "1431801596550840383": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": [
+            1028614937246969876,
+            691790884378771507,
+            1180334302874042469,
+            1319414415539310690,
+            961469969323929620,
+            1195385749617512499,
+            1229087151870709880,
+            1221639762172055694
+        ]
+    },
+    "1442279416259678220": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1420559594438000702": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1261542617389334610": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": [
+            691790884378771507,
+            1028614937246969876,
+            1180334302874042469,
+            1319414415539310690,
+            1195385749617512499,
+            1221639762172055694
+        ]
+    },
+    "1395476792633987275": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1136641496498577529": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1464254184676397058": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1449896203843145968": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": [
+            1044999606871801919,
+            1416344575605473362,
+            1461302848183730200,
+            1411430771071258695
+        ]
+    },
+    "1280648602300977194": {
+        "cooldown": 1.0,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1347875564945412220": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1477517945184714752": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "991819846390141150": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1398429426894635130": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1507984408898965504": {
+        "cooldown": 0.5,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "1487669406761746647": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    },
+    "<class 'str'>": {
+        "cooldown": 1,
+        "confess_enabled": true,
+        "opted_out": []
+    }
+}
