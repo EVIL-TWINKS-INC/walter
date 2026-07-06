@@ -46,6 +46,7 @@
 ＮＯＴＩＣＥ：　ＥＶＥＲＹ　ＢＵＧ　ＩＮ　ＴＨＩＳ　ＣＯＤＥ　ＩＳ　ＢＥＣＡＵＳＥ　ＯＦ　ＯＢＡＭＡ．
 ＮＯＴＩＣＥ：　ＥＶＥＲＹ　ＢＵＧ　ＩＮ　ＴＨＩＳ　ＣＯＤＥ　ＩＳ　ＢＥＣＡＵＳＥ　ＯＦ　ＯＢＡＭＡ．
 ＮＯＴＩＣＥ：　ＥＶＥＲＹ　ＢＵＧ　ＩＮ　ＴＨＩＳ　ＣＯＤＥ　ＩＳ　ＢＥＣＡＵＳＥ　ＯＦ　ＯＢＡＭＡ．
+thanks obama!
 """
 
 #STOP FORGETTING TO CHANGE THE BUILD NUMBER DUDE WHY DO I KEEP DOING THIS ITS A SIMPLE THING
@@ -110,8 +111,8 @@ fortunes = {
     46: "Beware of falling anvils, carry an umbrella.",
     47: "Wake up, the matrix has you.",
     48: "What Would Brian Boitano Do?",
-    49: "Placeholder text- remember to remove",
-    50: "Placeholder text- remember to remove"
+    49: "Obama Won't Care",
+    50: "Obama Will Care"
 }
 # Source - https://stackoverflow.com/a/1580250
 # Posted by Cat Plus Plus
