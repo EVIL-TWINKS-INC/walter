@@ -1,4 +1,4 @@
-#v4.3 stable
+#v4.4 stable
 """
 
 
@@ -686,18 +686,12 @@ async def self_timeout(interaction: discord.Interaction):
     if interaction.guild is None:
         return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
 
-    member = interaction.guild.get_member(interaction.user)
-    if member is None:
-        try:
-            member = await interaction.guild.fetch_member(member.id)
-        except discord.NotFound:
-            return await interaction.response.send_message("user not in server", ephemeral=True)
+    member = interaction.user
 
     command_author = interaction.user
-    if not command_author.guild_permissions.ban_members:
-        return await interaction.response.send_message("You dont have perms", ephemeral=True)
+
     if member.guild_permissions.administrator:
-        return await interaction.response.send_message("my guy its an admin", ephemeral=True)
+        return await interaction.response.send_message("Command cannot work on admins. Sorry!", ephemeral=True)
 
     if random.randint(1, 6) == 1:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
@@ -726,7 +720,7 @@ async def whatsnew(interaction: discord.Interaction):
 
 print("starting walter...")
 print(dectcount)
-bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GiwoM3.tpeNcIb6eDPZZe7tJ2TNeOerqgViu8lNwVkgPM")
+bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GyPoDl.P_m6UoSFt-XoLFSzzutY7hYtJSXZX2-93Ff2_I")
 
 #i am aware this nearly doubles the file size and does nothing. dont try to remove it.
 theentirebeemoviescript = {"""According to all known laws of aviation, there is no way a bee should be able to fly. 
@@ -1231,3 +1225,4 @@ get out of that office. You have got to start thinking bee, my friend. - Thinkin
 Let's just stop for a second. Hold it. I'm sorry. I'm sorry, everyone. Oan we stop here? I'm not
 making a major life decision during a production number! All right. Take ten, everybody. Wrap it up,
 guys. I had virtually no rehearsal for that."""}
+
