@@ -348,7 +348,7 @@ async def handle_message(message):
             walterImg = os.path.join(RARE_DIR, walterImg)
         elif rarityInt <= 95: #Legendary 15%
             walterImg = random.choice(os.listdir(LEGENDARY_DIR))
-            walterImg = os.path.join(RARE_DIR, walterImg)
+            walterImg = os.path.join(LEGENDARY_DIR, walterImg)
         else: #Brazillian 4.5%
             if random.randint(1, 10) == 1: #Golden 0.5%
                 walterImg = random.choice(os.listdir(GOLDEN_DIR))
