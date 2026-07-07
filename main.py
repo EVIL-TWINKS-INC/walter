@@ -700,7 +700,7 @@ async def whatsnew(interaction: discord.Interaction):
 
 print("starting walter...")
 print(dectcount)
-bot.run("")
+bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.Gu61Vl.unwPrBLqLj7gornbjkzj8BwI7FGeAYPGbj9yJg")
 
 
 
