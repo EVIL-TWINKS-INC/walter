@@ -410,27 +410,12 @@ async def handle_message(message):
                 return
 
     for word in WALTER:
-      roll = random.randint(1, 4)
-      if roll == 1:
-            if has_word(content, word):
-                await message.reply("im waltering it til i white")
-                user_cooldowns[message.guild.id][message.author.id] = now
-                return
-      if roll == 2:
-            if has_word(content, word):
-                await message.reply("Straight waltering it rn")
-                user_cooldowns[message.guild.id][message.author.id] = now
-                return
-      if roll == 3:
-            if has_word(content, word):
-                await message.reply("Im waltering and im gonna white")
-                user_cooldowns[message.guild.id][message.author.id] = now
-                return
-      if roll == 4:
-            if has_word(content, word):
-                await message.reply("im waltering it til i white")
-                user_cooldowns[message.guild.id][message.author.id] = now
-                return
+      roll = random.randint(1, 3)
+      say = ["im waltering it til i white","Straight waltering it rn","Im waltering and im gonna white"]
+      if has_word(content, word):
+          await message.reply(say[roll])
+          user_cooldowns[message.guild.id][message.author.id] = now
+          return
 
 
 #    for word in ASS:
