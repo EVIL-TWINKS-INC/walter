@@ -355,7 +355,7 @@ async def handle_message(message):
                 walterImg = os.path.join(GOLDEN_DIR, walterImg)
             else:
                 walterImg = random.choice(os.listdir(BRAZILLIAN_DIR))
-                walterImg = os.path.join(GOLDEN_DIR, walterImg)
+                walterImg = os.path.join(BRAZILLIAN_DIR, walterImg)
 
         if pattern.search(content):
                 await message.reply(
