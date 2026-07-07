@@ -675,7 +675,7 @@ async def ban(interaction: discord.Interaction, user: discord.User):
 
     if random.randint(1,6) == 1:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
-        await asyncio.sleep(6)
+        await asyncio.sleep(8)
         return await member.ban(reason="BANG")
 
 
