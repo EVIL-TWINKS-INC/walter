@@ -680,32 +680,24 @@ async def timeout(interaction: discord.Interaction, user: discord.User):
         await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
         return await asyncio.sleep(5.2)
 
-
 @bot.tree.command(name="self_roulette", description="1 in 6 Chance to timeout yourself")
-async def self_timeout(interaction: discord.Interaction):
-    if interaction.guild is None:
-        return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
+async def timeout(ctx):
 
-    member = interaction.guild.get_member(interaction.user)
+    member = ctx.guild.get_member(ctx.user)
     if member is None:
         try:
-            member = await interaction.guild.fetch_member(member.id)
+            member = await ctx.guild.fetch_member(ctx.user)
         except discord.NotFound:
-            return await interaction.response.send_message("user not in server", ephemeral=True)
+            return await ctx.response.send_message("user not in server", ephemeral=True)
 
-    command_author = interaction.user
-    if not command_author.guild_permissions.ban_members:
-        return await interaction.response.send_message("You dont have perms", ephemeral=True)
-    if member.guild_permissions.administrator:
-        return await interaction.response.send_message("my guy its an admin", ephemeral=True)
 
     if random.randint(1, 6) == 1:
-        await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
+        await ctx.response.send_message("", ephemeral=False, file=discord.File(DED))
         await asyncio.sleep(8)
         return await member.timeout(datetime.timedelta(minutes=1), reason="BANG")
 
     else:
-        await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
+        await ctx.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
         return await asyncio.sleep(5.2)
 
 
