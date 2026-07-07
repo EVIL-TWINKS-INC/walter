@@ -1,4 +1,4 @@
-#v4.3 (UN)stable
+#v4.3 stable
 """
 
 
@@ -156,8 +156,8 @@ LEGENDARY_DIR = os.path.join(BASE_DIR, "assets/twink_images/legendary")
 BRAZILLIAN_DIR = os.path.join(BASE_DIR, "assets/twink_images/brazillian")
 GOLDEN_DIR = os.path.join(BASE_DIR, "assets/twink_images/golden")
 
-DED = os.path.join(BASE_DIR, "assets/dedoralive/died.gif")
-ALIVE = os.path.join(BASE_DIR, "assets/dedoralive/lived.gif")
+DED = os.path.join(BASE_DIR, "assests/dedoralive/died.gif")
+ALIVE = os.path.join(BASE_DIR, "assests/dedoralive/lived.gif")
 
 BUG_LOG_FILE = os.path.join(BASE_DIR, "buglist.txt")
 INSTANCE_LOCK_PORT = 53183
@@ -700,7 +700,7 @@ async def whatsnew(interaction: discord.Interaction):
 
 print("starting walter...")
 print(dectcount)
-bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.Gu61Vl.unwPrBLqLj7gornbjkzj8BwI7FGeAYPGbj9yJg")
+bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GiwoM3.tpeNcIb6eDPZZe7tJ2TNeOerqgViu8lNwVkgPM")
 
 
 
