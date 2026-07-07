@@ -62,6 +62,7 @@ import random
 import asyncio
 import socket
 from collections import defaultdict
+
 fortunes = {
     1: "You will be pegged on july 7th 2029",
     2: "You will be found dead in a chuck e cheese ballpit in late novemeber",
@@ -135,7 +136,6 @@ datetime.datetime(2026, 8, 9) - datetime.datetime.now()
 datetime.timedelta(2, 5274, 16000)
 td = datetime.datetime(2026, 8, 9) - datetime.datetime.now()
 
-
 #honestly if you cant figure out what this does you shouldnt be here tbh
 ### this is for unstable walter ignore it
 BASE_DIR = r"C:\Users\Admin\OneDrive\Desktop\walter(unstablebuild)"
@@ -162,6 +162,7 @@ ALIVE = os.path.join(BASE_DIR, "assets/dedoralive/lived.gif")
 BUG_LOG_FILE = os.path.join(BASE_DIR, "buglist.txt")
 INSTANCE_LOCK_PORT = 53183
 
+
 def acquire_instance_lock():
     lock_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -171,10 +172,13 @@ def acquire_instance_lock():
         raise SystemExit(1)
     return lock_socket
 
+
 instance_lock = acquire_instance_lock()
+
 
 def has_word(text, word):
     return re.search(rf"(?<!\w){re.escape(word)}(?!\w)", text) is not None
+
 
 client = discord.Client
 #global dectcount
@@ -184,9 +188,12 @@ with open(twinksdetected) as f:
 
 print(dectcount)
 
+
 def save_count():
     with open(twinksdetected, "w") as f:
         f.write(str(dectcount))
+
+
 #CONFIG SYSTEM
 if os.path.exists(GUILD_CONFIG_FILE):
     with open(GUILD_CONFIG_FILE, "r") as f:
@@ -194,9 +201,11 @@ if os.path.exists(GUILD_CONFIG_FILE):
 else:
     guild_config = {}
 
+
 def save_guild_config():
     with open(GUILD_CONFIG_FILE, "w") as f:
         json.dump(guild_config, f, indent=4)
+
 
 def get_guild_config(gid: int):
     gid = str(gid)
@@ -218,6 +227,7 @@ intents.guilds = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 user_cooldowns = defaultdict(lambda: defaultdict(lambda: 0))
 
+
 async def update_status():
     servercount = len(bot.guilds)
     await bot.change_presence(
@@ -227,11 +237,13 @@ async def update_status():
         )
     )
 
+
 async def add_detection():
     global dectcount
     dectcount += 1
     save_count()
     await update_status()
+
 
 # LOAD FACE + TWINKFACE + SAFE ZERO-WIDTH CHARACTERS
 SAFE_ZERO_WIDTH = ["\u200b", "\u200c", "\u200d", "\ufe0f"]
@@ -252,13 +264,9 @@ else:
 WHITELIST = [re.compile(p) for p in WHITELIST_PATTERNS]
 
 
-
 #face builder
 
 def build_unicode_face_pattern(face: str, strict: bool) -> re.Pattern:
-
-
-
     SEP = r"(?:[\s\W]{0,10})"
 
     escaped_parts = [re.escape(ch) for ch in face]
@@ -270,7 +278,6 @@ def build_unicode_face_pattern(face: str, strict: bool) -> re.Pattern:
         pattern = inner
 
     return re.compile(pattern, re.IGNORECASE | re.DOTALL)
-
 
 
 FACE_PATTERNS = [build_unicode_face_pattern(f, strict=False) for f in FACES]
@@ -295,18 +302,18 @@ ATDOOR = [
     "yo mista white someones at the door", "someones at the door",
 ]
 WALTER = [
-    "walter", "waltuh", "mr white", "mista white","waltussy",
+    "walter", "waltuh", "mr white", "mista white", "waltussy",
 ]
 ASS = [
     "ass", "tiddies",
 ]
+
+
 #msg handler
 async def handle_message(message):
     global dectcount
     if message.author.bot or not message.guild:
         return
-
-
 
     cfg = get_guild_config(message.guild.id)
     cooldown = cfg["cooldown"]
@@ -325,13 +332,12 @@ async def handle_message(message):
         return
 
     content = message.content.lower().strip()
-#link remover?
+    #link remover?
     txt = content
     p = r'https?://\S+|www\.\S+'
     res = re.sub(p, "", txt)
     #this is what removes links from messages. dont ask me how it works i stole it from stackoverflow
     content = res
-
 
     for w in WHITELIST:
         if w.search(content):
@@ -340,17 +346,17 @@ async def handle_message(message):
     # Faces detection
     for pattern in FACE_PATTERNS:
         rarityInt = random.randint(1, 100)
-        if rarityInt <= 50: #Common 50%
+        if rarityInt <= 50:  #Common 50%
             walterImg = random.choice(os.listdir(COMMON_DIR))
             walterImg = os.path.join(COMMON_DIR, walterImg)
-        elif rarityInt <= 80: #Rare 30%
+        elif rarityInt <= 80:  #Rare 30%
             walterImg = random.choice(os.listdir(RARE_DIR))
             walterImg = os.path.join(RARE_DIR, walterImg)
-        elif rarityInt <= 95: #Legendary 15%
+        elif rarityInt <= 95:  #Legendary 15%
             walterImg = random.choice(os.listdir(LEGENDARY_DIR))
             walterImg = os.path.join(LEGENDARY_DIR, walterImg)
-        else: #Brazillian 4.5%
-            if random.randint(1, 10) == 1: #Golden 0.5%
+        else:  #Brazillian 4.5%
+            if random.randint(1, 10) == 1:  #Golden 0.5%
                 walterImg = random.choice(os.listdir(GOLDEN_DIR))
                 walterImg = os.path.join(GOLDEN_DIR, walterImg)
             else:
@@ -358,14 +364,13 @@ async def handle_message(message):
                 walterImg = os.path.join(BRAZILLIAN_DIR, walterImg)
 
         if pattern.search(content):
-                await message.reply(
-                    f"{message.author.mention} TWINK DETECTED",
-                    file=discord.File(walterImg)
-                )
-                user_cooldowns[message.guild.id][message.author.id] = now
-                await add_detection()
-                return
-
+            await message.reply(
+                f"{message.author.mention} TWINK DETECTED",
+                file=discord.File(walterImg)
+            )
+            user_cooldowns[message.guild.id][message.author.id] = now
+            await add_detection()
+            return
 
     for pattern in TWINKFACE_PATTERNS:
         if pattern.search(content):
@@ -383,24 +388,23 @@ async def handle_message(message):
             await add_detection()
             return
 
-
-#    if EMOJI_ID_REGEX.search(content):
-#        if random.randint(1, 500) == 1:
-#            await message.reply(
-#                f"{message.author.mention} TWINK DETECTED",
-#                file=discord.File(WALTERBALLS_IMG)
-#            )
-#            user_cooldowns[message.guild.id][message.author.id] = now
-#            await add_detection()
-#            return
-#        else:
-#            await message.reply(
-#                f"{message.author.mention} TWINK DETECTED",
-#                file=discord.File(BALLS_IMG)
-#            )
-#            user_cooldowns[message.guild.id][message.author.id] = now
-#            await add_detection()
-#            return
+    #    if EMOJI_ID_REGEX.search(content):
+    #        if random.randint(1, 500) == 1:
+    #            await message.reply(
+    #                f"{message.author.mention} TWINK DETECTED",
+    #                file=discord.File(WALTERBALLS_IMG)
+    #            )
+    #            user_cooldowns[message.guild.id][message.author.id] = now
+    #            await add_detection()
+    #            return
+    #        else:
+    #            await message.reply(
+    #                f"{message.author.mention} TWINK DETECTED",
+    #                file=discord.File(BALLS_IMG)
+    #            )
+    #            user_cooldowns[message.guild.id][message.author.id] = now
+    #            await add_detection()
+    #            return
 
     for word in ATDOOR:
         if random.randint(1, 1) == 1:
@@ -410,19 +414,18 @@ async def handle_message(message):
                 return
 
     for word in WALTER:
-      roll = random.randint(1, 3)
-      say = ["im waltering it til i white","Straight waltering it rn","Im waltering and im gonna white"]
-      if has_word(content, word):
-          await message.reply(say[roll])
-          user_cooldowns[message.guild.id][message.author.id] = now
-          return
+        roll = random.randint(1, 3)
+        say = ["im waltering it til i white", "Straight waltering it rn", "Im waltering and im gonna white"]
+        if has_word(content, word):
+            await message.reply(say[roll])
+            user_cooldowns[message.guild.id][message.author.id] = now
+            return
 
-
-#    for word in ASS:
-#        if has_word(content, word):
-#            await message.reply("where")
-#            user_cooldowns[message.guild.id][message.author.id] = now
-#            return
+    #    for word in ASS:
+    #        if has_word(content, word):
+    #            await message.reply("where")
+    #            user_cooldowns[message.guild.id][message.author.id] = now
+    #            return
 
     # stale?
     for word in PEPPER:
@@ -434,34 +437,32 @@ async def handle_message(message):
             user_cooldowns[message.guild.id][message.author.id] = now
             return
 
+
 #i fixed it but im leaving this comment in because its funny
 #FIX THIS ASAP ASHLEY WANTS IT REMOVED BEE HAS THE REPLACEMENT MESSSAGE ENSURE IT IS ALSO SET TO FOR WORD
-  #  if content == "soda":
-  #      await message.reply(
-  #         f"{message.author.mention} i like dr pepper",
-  #        file=discord.File(DRPEPPER_IMG)
-  #   )
-  #  user_cooldowns[message.guild.id][message.author.id] = now
-  #      return
+#  if content == "soda":
+#      await message.reply(
+#         f"{message.author.mention} i like dr pepper",
+#        file=discord.File(DRPEPPER_IMG)
+#   )
+#  user_cooldowns[message.guild.id][message.author.id] = now
+#      return
 
 ########################################
 #DROOLING OVER DICK CODE
 
-    # Trigger word response
-    # for word in TRIGGER_WORDS:
-     #    if word in content:
-       #      r1 = random.randint (1,2)
-         #    if r1 == 1:
-           #      await message.reply("yummy")
-             #    user_cooldowns[message.guild.id][message.author.id] = now
-               #  return
-           #  else:
-             #    await message.reply("\U0001F924")
-               #  user_cooldowns[message.guild.id][message.author.id] = now
-               #  return
-
-
-
+# Trigger word response
+# for word in TRIGGER_WORDS:
+#    if word in content:
+#      r1 = random.randint (1,2)
+#    if r1 == 1:
+#      await message.reply("yummy")
+#    user_cooldowns[message.guild.id][message.author.id] = now
+#  return
+#  else:
+#    await message.reply("\U0001F924")
+#  user_cooldowns[message.guild.id][message.author.id] = now
+#  return
 
 
 # ============================================================
@@ -476,6 +477,8 @@ async def on_message(message):
 '''
 REMEMBER TO MAKE IT DELETE OR SEND ON EDIT NOT JUST SEND. UNTIL THEN LEAVE IT DISABLED
 '''
+
+
 #@bot.event
 #async def on_message_edit(before, after):
 #    await handle_message(after)
@@ -492,27 +495,7 @@ async def on_ready():
 # DO YOU REMEMBER
 
 
-
-
-
 #remember
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # ============================================================
@@ -530,6 +513,7 @@ MORSE_CODE_DICT = {
     '0': '33333', ',': '33::33', '.': ':3:3:3', '?': '::33::', '/': '3::3:',
     '-': '3::::3', '(': '3:33:', ')': '3:33:3', ' ': ' '
 }
+
 
 def text_to_morse(text: str) -> str:
     morse_output = []
@@ -557,10 +541,10 @@ def text_to_morse(text: str) -> str:
 #    await interaction.response.send_message(f"```{result}```")
 
 
-
 @bot.tree.command(name="cookie", description="Get a shitty fortune cookie")
 async def cookie(interaction: discord.Interaction):
-    return await interaction.response.send_message(fortunes[random.randint(1,50)])
+    return await interaction.response.send_message(fortunes[random.randint(1, 50)])
+
 
 #cmnds
 @bot.tree.command(name="setcooldown", description="Set cooldown for THIS server")
@@ -577,6 +561,7 @@ async def set_cooldown(interaction: discord.Interaction, seconds: float):
         ephemeral=True
     )
 
+
 @bot.tree.command(name="toggleconfess", description="Admin: enable/disable /confess")
 async def toggle_confess(interaction: discord.Interaction):
     if not interaction.user.guild_permissions.administrator:
@@ -589,6 +574,7 @@ async def toggle_confess(interaction: discord.Interaction):
     state = "ENABLED ✅" if cfg["confess_enabled"] else "DISABLED ❌"
     await interaction.response.send_message(f"`/confess` is now **{state}**.", ephemeral=True)
 
+
 @bot.tree.command(name="imnotgayiswear", description="Opt out of Walter (FOR THIS SERVER")
 async def opt_out(interaction: discord.Interaction):
     cfg = get_guild_config(interaction.guild_id)
@@ -596,6 +582,7 @@ async def opt_out(interaction: discord.Interaction):
         cfg["opted_out"].append(interaction.user.id)
         save_guild_config()
     await interaction.response.send_message("You are now opted out.", ephemeral=True)
+
 
 @bot.tree.command(name="nvm_im_gay", description="Opt back in")
 async def opt_in(interaction: discord.Interaction):
@@ -608,6 +595,7 @@ async def opt_in(interaction: discord.Interaction):
 
 CONFESS_TEXT = """My name is Walter Hartwell White. I live at 308 Negra Arroyo Lane, Albuquerque, New Mexico, 87104. This is my confession. If you're watching this tape, I'm probably dead, murdered by my brother-in-law Hank Schrader. Hank has been building a meth empire for over a year now and using me as his chemist. Shortly after my 50th birthday, Hank came to me with a rather, shocking proposition. He asked that I use my chemistry knowledge to cook methamphetamine, which he would then sell using his connections in the drug world. Connections that he made through his career with the DEA. I was... astounded, I... I always thought that Hank was a very moral man and I was... thrown, confused, but I was also particularly vulnerable at the time, something he knew and took advantage of. I was reeling from a cancer diagnosis that was poised to bankrupt my family. Hank took me on a ride along, and showed me just how much money even a small meth operation could make. And I was weak. I didn't want my family to go into financial ruin so I agreed. Every day, I think back at that moment with regret. I quickly realized that I was in way over my head, and Hank had a partner, a man named Gustavo Fring, a businessman. Hank essentially sold me into servitude to this man, and when I tried to quit, Fring threatened my family. I didn't know where to turn. Eventually, Hank and Fring had a falling out. From what I can gather, Hank was always pushing for a greater share of the business, to which Fring flatly refused to give him, and things escalated. Fring was able to arrange, uh I guess I guess you call it a "hit" on my brother-in-law, and failed, but Hank was seriously injured, and I wound up paying his medical bills which amounted to a little over $177,000. Upon recovery, Hank was bent on revenge, working with a man named Hector Salamanca, he plotted to kill Fring, and did so. In fact, the bomb that he used was built by me, and he gave me no option in it.."""
 
+
 @bot.tree.command(name="confess", description="Walter White confession")
 async def confess(interaction: discord.Interaction):
     cfg = get_guild_config(interaction.guild_id)
@@ -619,7 +607,6 @@ async def confess(interaction: discord.Interaction):
 
 @bot.tree.context_menu(name="Report Bug")
 async def bug_context(interaction: discord.Interaction, message: discord.Message):
-
     timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
 
     log_entry = (
@@ -638,8 +625,7 @@ async def bug_context(interaction: discord.Interaction, message: discord.Message
     await interaction.response.send_message("Bug logged — thank you :3", ephemeral=True)
 
 
-
-@bot.tree.command(name="russian_roullete", description="1 in 6 Chance to ban someone")
+@bot.tree.command(name="russian_roulette", description="1 in 6 Chance to ban someone")
 async def ban(interaction: discord.Interaction, user: discord.User):
     if interaction.guild is None:
         return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
@@ -657,12 +643,66 @@ async def ban(interaction: discord.Interaction, user: discord.User):
     if member.guild_permissions.administrator:
         return await interaction.response.send_message("my guy its an admin", ephemeral=True)
 
-
-    if random.randint(1,6) == 1:
+    if random.randint(1, 6) == 1:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
         await asyncio.sleep(8)
         return await member.ban(reason="BANG")
 
+    else:
+        await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
+        return await asyncio.sleep(5.2)
+
+
+@bot.tree.command(name="soft_roulette", description="1 in 6 Chance to timeout someone")
+async def timeout(interaction: discord.Interaction, user: discord.User):
+    if interaction.guild is None:
+        return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
+
+    member = interaction.guild.get_member(user.id)
+    if member is None:
+        try:
+            member = await interaction.guild.fetch_member(user.id)
+        except discord.NotFound:
+            return await interaction.response.send_message("user not in server", ephemeral=True)
+
+    command_author = interaction.user
+    if not command_author.guild_permissions.mute_members:
+        return await interaction.response.send_message("You dont have perms", ephemeral=True)
+    if member.guild_permissions.administrator:
+        return await interaction.response.send_message("my guy its an admin", ephemeral=True)
+
+    if random.randint(1, 6) == 1:
+        await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
+        await asyncio.sleep(8)
+        return await member.timeout(datetime.timedelta(minutes=1), reason="BANG")
+
+    else:
+        await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
+        return await asyncio.sleep(5.2)
+
+
+@bot.tree.command(name="self_roulette", description="1 in 6 Chance to timeout yourself")
+async def self_timeout(interaction: discord.Interaction):
+    if interaction.guild is None:
+        return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
+
+    member = interaction.guild.get_member(interaction.user)
+    if member is None:
+        try:
+            member = await interaction.guild.fetch_member(member.id)
+        except discord.NotFound:
+            return await interaction.response.send_message("user not in server", ephemeral=True)
+
+    command_author = interaction.user
+    if not command_author.guild_permissions.ban_members:
+        return await interaction.response.send_message("You dont have perms", ephemeral=True)
+    if member.guild_permissions.administrator:
+        return await interaction.response.send_message("my guy its an admin", ephemeral=True)
+
+    if random.randint(1, 6) == 1:
+        await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
+        await asyncio.sleep(8)
+        return await member.timeout(datetime.timedelta(minutes=1), reason="BANG")
 
     else:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
@@ -671,26 +711,22 @@ async def ban(interaction: discord.Interaction, user: discord.User):
 
 @bot.tree.command(name="help", description="a quick overview of walter (I ADVISE AGAINST USING THIS COMMAND.)")
 async def help(interaction: discord.Interaction):
-  return await interaction.response.send_message("If you say :3 or something along the lines of that or uwu Walter "
-                                                 "freaks the hell out. saying soda, walter/waltuh, and i think some "
-                                                 "others he has some responses. /confess does... stuff. and /imnotgayiswear "
-                                                 "makes walter ignore you /nvmimgay undos this.", ephemeral=True)
+    return await interaction.response.send_message("If you say :3 or something along the lines of that or uwu Walter "
+                                                   "freaks the hell out. saying soda, walter/waltuh, and i think some "
+                                                   "others he has some responses. /confess does... stuff. and /imnotgayiswear "
+                                                   "makes walter ignore you /nvmimgay undos this.", ephemeral=True)
 
-@bot.tree.command (name="whatsnew", description= "patch notes for walter")
+
+@bot.tree.command(name="whatsnew", description="patch notes for walter")
 async def whatsnew(interaction: discord.Interaction):
-  return await interaction.response.send_message("version 4.3: Removed twinktext, added cookie command, added more "
-                                                 "variation to walters response twink_images, changed priorty of walter "
-                                                 "responses, improved backend readability.")
+    return await interaction.response.send_message("version 4.3: Removed twinktext, added cookie command, added more "
+                                                   "variation to walters response twink_images, changed priorty of walter "
+                                                   "responses, improved backend readability.")
 
 
 print("starting walter...")
 print(dectcount)
 bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GiwoM3.tpeNcIb6eDPZZe7tJ2TNeOerqgViu8lNwVkgPM")
-
-
-
-
-
 
 #i am aware this nearly doubles the file size and does nothing. dont try to remove it.
 theentirebeemoviescript = {"""According to all known laws of aviation, there is no way a bee should be able to fly. 
