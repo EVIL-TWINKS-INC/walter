@@ -346,13 +346,13 @@ async def handle_message(message):
     # Faces detection
     for pattern in FACE_PATTERNS:
         rarityInt = random.randint(1, 100)
-        if rarityInt <= 50:  #Common 50%
+        if rarityInt <= 65:  #Common 65%
             walterImg = random.choice(os.listdir(COMMON_DIR))
             walterImg = os.path.join(COMMON_DIR, walterImg)
-        elif rarityInt <= 80:  #Rare 30%
+        elif rarityInt <= 85:  #Rare 20%
             walterImg = random.choice(os.listdir(RARE_DIR))
             walterImg = os.path.join(RARE_DIR, walterImg)
-        elif rarityInt <= 95:  #Legendary 15%
+        elif rarityInt <= 95:  #Legendary 10%
             walterImg = random.choice(os.listdir(LEGENDARY_DIR))
             walterImg = os.path.join(LEGENDARY_DIR, walterImg)
         else:  #Brazillian 4.5%
@@ -414,7 +414,7 @@ async def handle_message(message):
                 return
 
     for word in WALTER:
-        roll = random.randint(1, 3)
+        roll = random.randint(0, 2)
         say = ["im waltering it til i white", "Straight waltering it rn", "Im waltering and im gonna white"]
         if has_word(content, word):
             await message.reply(say[roll])
