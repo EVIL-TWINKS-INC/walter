@@ -147,12 +147,14 @@ TWINKFACE_FILE = os.path.join(BASE_DIR, "data/twinkface.txt")
 WHITELIST_FILE = os.path.join(BASE_DIR, "data/whitelist.txt")
 GIF_DIR = os.path.join(BASE_DIR, "assets/gifs")
 HOMO_GIF_DIR = os.path.join(BASE_DIR, "assets/homogifs")
-BALLS_IMG = os.path.join(BASE_DIR, "assets/images/balls.png")
-WALTERBALLS_IMG = os.path.join(BASE_DIR, "assets/images/walterballs.png")
 DRPEPPER_IMG = os.path.join(BASE_DIR, "assets/drpepper.png")
-
 HOMO_WIN_IMG = os.path.join(HOMO_GIF_DIR, "homowin.gif")
 HOMO_FAIL_IMG = os.path.join(HOMO_GIF_DIR, "homofail.gif")
+COMMON_DIR = os.path.join(BASE_DIR, "assets/twink_images/common")
+RARE_DIR = os.path.join(BASE_DIR, "assets/twink_images/rare")
+LEGENDARY_DIR = os.path.join(BASE_DIR, "assets/twink_images/legendary")
+BRAZILLIAN_DIR = os.path.join(BASE_DIR, "assets/twink_images/brazillian")
+GOLDEN_DIR = os.path.join(BASE_DIR, "assets/twink_images/golden")
 
 DED = os.path.join(BASE_DIR, "assests/dedoralive/died.gif")
 ALIVE = os.path.join(BASE_DIR, "assests/dedoralive/lived.gif")
@@ -337,19 +339,28 @@ async def handle_message(message):
 
     # Faces detection
     for pattern in FACE_PATTERNS:
-        if pattern.search(content):
-            if random.randint(1,500) == 1:
-                await message.reply(
-                    f"{message.author.mention} TWINK DETECTED",
-                    file=discord.File(WALTERBALLS_IMG)
-                )
-                user_cooldowns[message.guild.id][message.author.id] = now
-                await add_detection()
-                return
+        rarityInt = random.randint(1, 100)
+        if rarityInt <= 50: #Common 50%
+            walterImg = random.choice(os.listdir(COMMON_DIR))
+            walterImg = os.path.join(COMMON_DIR, walterImg)
+        elif rarityInt <= 80: #Rare 30%
+            walterImg = random.choice(os.listdir(RARE_DIR))
+            walterImg = os.path.join(RARE_DIR, walterImg)
+        elif rarityInt <= 95: #Legendary 15%
+            walterImg = random.choice(os.listdir(LEGENDARY_DIR))
+            walterImg = os.path.join(RARE_DIR, walterImg)
+        else: #Brazillian 4.5%
+            if random.randint(1, 10) == 1: #Golden 0.5%
+                walterImg = random.choice(os.listdir(GOLDEN_DIR))
+                walterImg = os.path.join(GOLDEN_DIR, walterImg)
             else:
+                walterImg = random.choice(os.listdir(BRAZILLIAN_DIR))
+                walterImg = os.path.join(GOLDEN_DIR, walterImg)
+
+        if pattern.search(content):
                 await message.reply(
                     f"{message.author.mention} TWINK DETECTED",
-                    file=discord.File(BALLS_IMG)
+                    file=discord.File(walterImg)
                 )
                 user_cooldowns[message.guild.id][message.author.id] = now
                 await add_detection()
@@ -373,23 +384,23 @@ async def handle_message(message):
             return
 
 
-    if EMOJI_ID_REGEX.search(content):
-        if random.randint(1, 500) == 1:
-            await message.reply(
-                f"{message.author.mention} TWINK DETECTED",
-                file=discord.File(WALTERBALLS_IMG)
-            )
-            user_cooldowns[message.guild.id][message.author.id] = now
-            await add_detection()
-            return
-        else:
-            await message.reply(
-                f"{message.author.mention} TWINK DETECTED",
-                file=discord.File(BALLS_IMG)
-            )
-            user_cooldowns[message.guild.id][message.author.id] = now
-            await add_detection()
-            return
+#    if EMOJI_ID_REGEX.search(content):
+#        if random.randint(1, 500) == 1:
+#            await message.reply(
+#                f"{message.author.mention} TWINK DETECTED",
+#                file=discord.File(WALTERBALLS_IMG)
+#            )
+#            user_cooldowns[message.guild.id][message.author.id] = now
+#            await add_detection()
+#            return
+#        else:
+#            await message.reply(
+#                f"{message.author.mention} TWINK DETECTED",
+#                file=discord.File(BALLS_IMG)
+#            )
+#            user_cooldowns[message.guild.id][message.author.id] = now
+#            await add_detection()
+#            return
 
     for word in ATDOOR:
         if random.randint(1, 1) == 1:
@@ -683,7 +694,7 @@ async def help(interaction: discord.Interaction):
 @bot.tree.command (name="whatsnew", description= "patch notes for walter")
 async def whatsnew(interaction: discord.Interaction):
   return await interaction.response.send_message("version 4.3: Removed twinktext, added cookie command, added more "
-                                                 "variation to walters response images, changed priorty of walter "
+                                                 "variation to walters response twink_images, changed priorty of walter "
                                                  "responses, improved backend readability.")
 
 
