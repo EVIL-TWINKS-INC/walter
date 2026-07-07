@@ -156,8 +156,8 @@ LEGENDARY_DIR = os.path.join(BASE_DIR, "assets/twink_images/legendary")
 BRAZILLIAN_DIR = os.path.join(BASE_DIR, "assets/twink_images/brazillian")
 GOLDEN_DIR = os.path.join(BASE_DIR, "assets/twink_images/golden")
 
-DED = os.path.join(BASE_DIR, "assests/dedoralive/died.gif")
-ALIVE = os.path.join(BASE_DIR, "assests/dedoralive/lived.gif")
+DED = os.path.join(BASE_DIR, "assets/dedoralive/died.gif")
+ALIVE = os.path.join(BASE_DIR, "assets/dedoralive/lived.gif")
 
 BUG_LOG_FILE = os.path.join(BASE_DIR, "buglist.txt")
 INSTANCE_LOCK_PORT = 53183
@@ -674,14 +674,14 @@ async def ban(interaction: discord.Interaction, user: discord.User):
 
 
     if random.randint(1,6) == 1:
-        return await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
+        await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
         await asyncio.sleep(6)
-        await member.ban(reason="BANG")
+        return await member.ban(reason="BANG")
 
 
     else:
-        return await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
-    await asyncio.sleep(5.2)
+        await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
+        return await asyncio.sleep(5.2)
 
 
 @bot.tree.command(name="help", description="a quick overview of walter (I ADVISE AGAINST USING THIS COMMAND.)")
