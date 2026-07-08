@@ -618,8 +618,10 @@ async def confess(interaction: discord.Interaction):
     cfg = get_guild_config(interaction.guild_id)
     if not cfg["confess_enabled"]:
         return await interaction.response.send_message("❌ This command is disabled.", ephemeral=True)
-
-    await interaction.response.send_message(CONFESS_TEXT)
+    if random.randint(1, 100):
+        await interaction.response.send_message(THE_ENTIRE_BEE_MOVIE_SCRIPT)
+    else:
+        await interaction.response.send_message(CONFESS_TEXT)
 
 
 @bot.tree.context_menu(name="Report Bug")
@@ -747,7 +749,7 @@ print(dectcount)
 bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GLJzSS.Ghmh7rmKTZDC0w5y0t0d0P6T-CbTKh77pYc2Dw")
 
 #i am aware this nearly doubles the file size and does nothing. dont try to remove it.
-theentirebeemoviescript = {"""According to all known laws of aviation, there is no way a bee should be able to fly. 
+THE_ENTIRE_BEE_MOVIE_SCRIPT = {"""According to all known laws of aviation, there is no way a bee should be able to fly. 
 Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't
 care what humans think is impossible. Yellow, black. Yellow, black. Yellow, black. Yellow, black.
 Ooh, black and yellow! Let's shake it up a little. Barry! Breakfast is ready! Ooming! Hang on a
