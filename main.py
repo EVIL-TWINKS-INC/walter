@@ -302,11 +302,11 @@ ATDOOR = [
     "yo mista white someones at the door", "someones at the door",
 ]
 WALTER = [
-    "walter", "waltuh", "mr white", "mista white", "waltussy",
+    "walter", "waltuh", "mr white", "mista white", "waltussy","waltiddy","walitty",
 ]
-ASS = [
-    "ass", "tiddies",
-]
+#ASS = [
+#    "ass", "tiddies",
+#]
 
 
 #msg handler
@@ -502,33 +502,33 @@ async def on_ready():
 #                  twinktext
 
 
-MORSE_CODE_DICT = {
-    'A': ':3', 'B': '3:::', 'C': '3:3:', 'D': '3::', 'E': ':',
-    'F': '::3:', 'G': '33:', 'H': '::::', 'I': '::', 'J': ':333',
-    'K': '3.3', 'L': '.3..', 'M': '33', 'N': '3.', 'O': '333',
-    'P': ':33:', 'Q': '33:3', 'R': ':3:', 'S': ':::', 'T': '3',
-    'U': '..3', 'V': '...3', 'W': '.33', 'X': '3..3', 'Y': '3.33',
-    'Z': '33::', '1': ':3333', '2': '::333', '3': ':::33', '4': '::::3',
-    '5': ':::::', '6': '3::::', '7': '33:::', '8': '333::', '9': '3333:',
-    '0': '33333', ',': '33::33', '.': ':3:3:3', '?': '::33::', '/': '3::3:',
-    '-': '3::::3', '(': '3:33:', ')': '3:33:3', ' ': ' '
-}
-
-
-def text_to_morse(text: str) -> str:
-    morse_output = []
-
-    for char in text.upper():
-        if char in MORSE_CODE_DICT:
-            morse_output.append(MORSE_CODE_DICT[char])
-        elif char == ' ':
-            morse_output.append('  ')  # word spacing
-        else:
-            continue  # ignore unknown chars
-
-    return ' '.join(morse_output)
-
-
+#MORSE_CODE_DICT = {
+#    'A': ':3', 'B': '3:::', 'C': '3:3:', 'D': '3::', 'E': ':',
+#    'F': '::3:', 'G': '33:', 'H': '::::', 'I': '::', 'J': ':333',
+#    'K': '3.3', 'L': '.3..', 'M': '33', 'N': '3.', 'O': '333',
+#    'P': ':33:', 'Q': '33:3', 'R': ':3:', 'S': ':::', 'T': '3',
+#    'U': '..3', 'V': '...3', 'W': '.33', 'X': '3..3', 'Y': '3.33',
+#    'Z': '33::', '1': ':3333', '2': '::333', '3': ':::33', '4': '::::3',
+#    '5': ':::::', '6': '3::::', '7': '33:::', '8': '333::', '9': '3333:',
+#    '0': '33333', ',': '33::33', '.': ':3:3:3', '?': '::33::', '/': '3::3:',
+#    '-': '3::::3', '(': '3:33:', ')': '3:33:3', ' ': ' '
+#}
+#
+#
+#def text_to_morse(text: str) -> str:
+#    morse_output = []
+#
+#    for char in text.upper():
+#        if char in MORSE_CODE_DICT:
+#            morse_output.append(MORSE_CODE_DICT[char])
+#        elif char == ' ':
+#            morse_output.append('  ')  # word spacing
+#        else:
+#            continue  # ignore unknown chars
+#
+#    return ' '.join(morse_output)
+#
+#
 #@bot.tree.command(name="twinktext", description=":3")
 #async def morse(interaction: discord.Interaction, text: str):
 #
