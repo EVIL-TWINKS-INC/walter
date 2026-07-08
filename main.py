@@ -48,6 +48,8 @@
 ＮＯＴＩＣＥ：　ＥＶＥＲＹ　ＢＵＧ　ＩＮ　ＴＨＩＳ　ＣＯＤＥ　ＩＳ　ＢＥＣＡＵＳＥ　ＯＦ　ＯＢＡＭＡ．
 thanks obama!
 """
+from email import message
+from logging import exception
 
 #STOP FORGETTING TO CHANGE THE BUILD NUMBER DUDE WHY DO I KEEP DOING THIS ITS A SIMPLE THING
 
@@ -158,6 +160,8 @@ GOLDEN_DIR = os.path.join(BASE_DIR, "assets/twink_images/golden")
 
 DED = os.path.join(BASE_DIR, "assets/dedoralive/died.gif")
 ALIVE = os.path.join(BASE_DIR, "assets/dedoralive/lived.gif")
+
+MATHNOLONGERAPPLYS = os.path.join(BASE_DIR, "error.png")
 
 BUG_LOG_FILE = os.path.join(BASE_DIR, "buglist.txt")
 INSTANCE_LOCK_PORT = 53183
@@ -308,8 +312,9 @@ WALTER = [
 #ASS = [
 #    "ass", "tiddies",
 #]
-
-
+async def thelawsofmathmateicsnolongerapply():
+    if not 1 == 1:
+        await message.reply(file=discord.File(MATHNOLONGERAPPLYS), embed=embed)
 #msg handler
 async def handle_message(message):
     global dectcount
