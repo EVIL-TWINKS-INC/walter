@@ -142,6 +142,7 @@ td = datetime.datetime(2026, 8, 9) - datetime.datetime.now()
 ### this is for unstable walter ignore it
 BASE_DIR = r"C:\Users\Admin\OneDrive\Desktop\walter(unstablebuild)"
 #BASE_DIR = "/home/elly/botfolder"
+token = os.path.join(BASE_DIR, "token.txt")
 twinksdetected = os.path.join(BASE_DIR, "data/count.txt")
 GUILD_CONFIG_FILE = os.path.join(BASE_DIR, "guilds.json")
 FACE_FILE = os.path.join(BASE_DIR, "data/faces.txt")
@@ -748,7 +749,11 @@ async def whatsnew(interaction: discord.Interaction):
 
 print("starting walter...")
 print(dectcount)
-bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GLJzSS.Ghmh7rmKTZDC0w5y0t0d0P6T-CbTKh77pYc2Dw")
+tokenvar1 = open(token, "r")
+
+tokenstr = str(tokenvar1.read())
+
+bot.run(tokenstr)
 
 #i am aware this nearly doubles the file size and does nothing. dont try to remove it.
 THE_ENTIRE_BEE_MOVIE_SCRIPT = {"""According to all known laws of aviation, there is no way a bee should be able to fly. 
