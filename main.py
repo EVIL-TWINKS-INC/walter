@@ -311,7 +311,7 @@ WALTER = [
 
 
 #msg handler
-def handle_message(message):
+async def handle_message(message):
     global dectcount
     if message.author.bot or not message.guild:
         return
