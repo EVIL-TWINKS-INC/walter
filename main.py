@@ -724,6 +724,11 @@ async def help(interaction: discord.Interaction):
                                                    "others he has some responses. /confess does... stuff. and /imnotgayiswear "
                                                    "makes walter ignore you /nvmimgay undos this.", ephemeral=True)
 
+@bot.tree.command(name="credits", description="credits of all the people who made images and stuff :3")
+async def credits(interaction: discord.Interaction):
+    return await interaction.response.send_message("Big thanks to BJC95 and _kigoxd, for a ton of images. The Moth OC in"
+                                                   " the cage is Ashley (Gorganzola)'s OC.", ephemeral=True)
+
 
 @bot.tree.command(name="whatsnew", description="patch notes for walter")
 async def whatsnew(interaction: discord.Interaction):
