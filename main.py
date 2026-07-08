@@ -1,4 +1,4 @@
-#v4.3 stable
+#v4.4 stable
 """
 
 
@@ -48,7 +48,7 @@
 ＮＯＴＩＣＥ：　ＥＶＥＲＹ　ＢＵＧ　ＩＮ　ＴＨＩＳ　ＣＯＤＥ　ＩＳ　ＢＥＣＡＵＳＥ　ＯＦ　ＯＢＡＭＡ．
 thanks obama!
 """
-from email import message
+
 from logging import exception
 
 #STOP FORGETTING TO CHANGE THE BUILD NUMBER DUDE WHY DO I KEEP DOING THIS ITS A SIMPLE THING
@@ -741,9 +741,9 @@ async def help(interaction: discord.Interaction):
 
 @bot.tree.command(name="whatsnew", description="patch notes for walter")
 async def whatsnew(interaction: discord.Interaction):
-    return await interaction.response.send_message("version 4.3: Removed twinktext, added cookie command, added more "
-                                                   "variation to walters response twink_images, changed priorty of walter "
-                                                   "responses, improved backend readability.")
+    return await interaction.response.send_message("version 4.4: added soft roulette (instead of a ban its a one minute time out from losing),"
+                                                     "added self roulette (soft roullete but used on yourself) added failsafe for if the laws of "
+                                                    "mathmatics no longer apply, added WAY MORE walter response images,")
 
 
 print("starting walter...")
