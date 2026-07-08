@@ -857,7 +857,8 @@ the car! - Do something! - I'm driving! - Hi, bee. - He's back here! He's going 
 move. If you don't move, he won't sting you. Freeze! He blinked! Spray him, Granny! What are you
 doing?! Wow... the tension level out here is unbelievable. I gotta get home. Oan't fly in rain. Oan't fly
 in rain. Oan't fly in rain. Mayday! Mayday! Bee going down! Ken, could you close the window
-please? Ken, could you close the window please? Oheck out my new resume. I made it into a foldout brochure. You see? Folds out. Oh, no. More humans. I don't need this. What was that? Maybe
+please? Ken, could you close the window please? Oheck out my new resume. I made it into a foldout brochure. You see? 
+Folds out. Oh, no. More humans. I don't need this. What was that? Maybe
 this time. This time. This time. This time! This time! This... Drapes! That is diabolical. It's fantastic.
 It's got all my special skills, even my top-ten favorite movies. What's number one? Star Wars? Nah,
 I don't go for that... ...kind of stuff. No wonder we shouldn't talk to them. They're out of their minds.
@@ -908,7 +909,8 @@ of my life. Humans! I can't believe you were with humans! Giant, scary humans! W
 like? Huge and crazy. They talk crazy. They eat crazy giant things. They drive crazy. - Do they try
 and kill you, like on TV? - Some of them. But some of them don't. - How'd you get back? - Poodle.
 You did it, and I'm glad. You saw whatever you wanted to see. You had your "experience." Now you
-can pick out yourjob and be normal. - Well... - Well? Well, I met someone. You did? Was she Beeish? - A wasp?! Your parents will kill you! - No, no, no, not a wasp. - Spider? - I'm not attracted to
+can pick out yourjob and be normal. - Well... - Well? Well, I met someone. You did? Was she Beeish? - A wasp?! Your 
+parents will kill you! - No, no, no, not a wasp. - Spider? - I'm not attracted to
 spiders. I know it's the hottest thing, with the eight legs and all. I can't get by that face. So who is
 she? She's... human. No, no. That's a bee law. You wouldn't break a bee law. - Her name's
 Vanessa. - Oh, boy. She's so nice. And she's a florist! Oh, no! You're dating a human florist! We're
@@ -1020,7 +1022,8 @@ guess. You sure you want to go through with it? Am I sure? When I'm done with th
 won't be able to say, "Honey, I'm home," without paying a royalty! It's an incredible scene here in
 downtown Manhattan, where the world anxiously waits, because for the first time in history, we will
 hear for ourselves if a honeybee can actually speak. What have we gotten into here, Barry? It's
-pretty big, isn't it? I can't believe how many humans don't work during the day. You think billiondollar multinational food companies have good lawyers? Everybody needs to stay behind the
+pretty big, isn't it? I can't believe how many humans don't work during the day. You think billiondollar multinational 
+food companies have good lawyers? Everybody needs to stay behind the
 barricade. - What's the matter? - I don't know, I just got a chill. Well, if it isn't the bee team. You
 boys work on this? All rise! The Honorable Judge Bumbleton presiding. All right. Oase number 4475,
 Superior Oourt of New York, Barry Bee Benson v. the Honey Industry is now in session. Mr.
@@ -1030,7 +1033,8 @@ Mr. Montgomery, your opening statement, please. Ladies and gentlemen of the jury
 grandmother was a simple woman. Born on a farm, she believed it was man's divine right to benefit
 from the bounty of nature God put before us. If we lived in the topsy-turvy world Mr. Benson
 imagines, just think of what would it mean. I would have to negotiate with the silkworm for the
-elastic in my britches! Talking bee! How do we know this isn't some sort of holographic motionpicture-capture Hollywood wizardry? They could be using laser beams! Robotics! Ventriloquism!
+elastic in my britches! Talking bee! How do we know this isn't some sort of holographic motionpicture-capture Hollywood 
+wizardry? They could be using laser beams! Robotics! Ventriloquism!
 Oloning! For all we know, he could be on steroids! Mr. Benson? Ladies and gentlemen, there's no
 trickery here. I'm just an ordinary bee. Honey's pretty important to me. It's important to all bees. We
 invented it! We make it. And we protect it with our lives. Unfortunately, there are some people in this
@@ -1123,7 +1127,8 @@ bees who have never been asked, "Smoking or non?" Is this what nature intended f
 forcibly addicted to smoke machines and man-made wooden slat work camps? Living out our lives
 as honey slaves to the white man? - What are we gonna do? - He's playing the species card. Ladies
 and gentlemen, please, free these bees! Free the bees! Free the bees! Free the bees! Free the bees!
-Free the bees! The court finds in favor of the bees! Vanessa, we won! I knew you could do it! Highfive! Sorry. I'm OK! You know what this means? All the honey will finally belong to the bees. Now we
+Free the bees! The court finds in favor of the bees! Vanessa, we won! I knew you could do it! Highfive! Sorry. I'm OK! 
+You know what this means? All the honey will finally belong to the bees. Now we
 won't have to work so hard all the time. This is an unholy perversion of the balance of nature,
 Benson. You'll regret this. Barry, how much honey is out there? All right. One at a time. Barry, who
 are you wearing? My sweater is Ralph Lauren, and I have no pants. - What if Montgomery's right? -
