@@ -302,11 +302,11 @@ ATDOOR = [
     "yo mista white someones at the door", "someones at the door",
 ]
 WALTER = [
-    "walter", "waltuh", "mr white", "mista white", "waltussy","waltiddy","walitty",
+    "walter", "waltuh", "mr white", "mista white", "waltussy",
 ]
-#ASS = [
-#    "ass", "tiddies",
-#]
+ASS = [
+    "ass", "tiddies",
+]
 
 
 #msg handler
@@ -346,13 +346,13 @@ async def handle_message(message):
     # Faces detection
     for pattern in FACE_PATTERNS:
         rarityInt = random.randint(1, 100)
-        if rarityInt <= 50:  #Common 50%
+        if rarityInt <= 65:  #Common 65%
             walterImg = random.choice(os.listdir(COMMON_DIR))
             walterImg = os.path.join(COMMON_DIR, walterImg)
-        elif rarityInt <= 80:  #Rare 30%
+        elif rarityInt <= 85:  #Rare 20%
             walterImg = random.choice(os.listdir(RARE_DIR))
             walterImg = os.path.join(RARE_DIR, walterImg)
-        elif rarityInt <= 95:  #Legendary 15%
+        elif rarityInt <= 95:  #Legendary 10%
             walterImg = random.choice(os.listdir(LEGENDARY_DIR))
             walterImg = os.path.join(LEGENDARY_DIR, walterImg)
         else:  #Brazillian 4.5%
@@ -414,7 +414,7 @@ async def handle_message(message):
                 return
 
     for word in WALTER:
-        roll = random.randint(1, 3)
+        roll = random.randint(0, 2)
         say = ["im waltering it til i white", "Straight waltering it rn", "Im waltering and im gonna white"]
         if has_word(content, word):
             await message.reply(say[roll])
@@ -502,33 +502,33 @@ async def on_ready():
 #                  twinktext
 
 
-#MORSE_CODE_DICT = {
-#    'A': ':3', 'B': '3:::', 'C': '3:3:', 'D': '3::', 'E': ':',
-#    'F': '::3:', 'G': '33:', 'H': '::::', 'I': '::', 'J': ':333',
-#    'K': '3.3', 'L': '.3..', 'M': '33', 'N': '3.', 'O': '333',
-#    'P': ':33:', 'Q': '33:3', 'R': ':3:', 'S': ':::', 'T': '3',
-#    'U': '..3', 'V': '...3', 'W': '.33', 'X': '3..3', 'Y': '3.33',
-#    'Z': '33::', '1': ':3333', '2': '::333', '3': ':::33', '4': '::::3',
-#    '5': ':::::', '6': '3::::', '7': '33:::', '8': '333::', '9': '3333:',
-#    '0': '33333', ',': '33::33', '.': ':3:3:3', '?': '::33::', '/': '3::3:',
-#    '-': '3::::3', '(': '3:33:', ')': '3:33:3', ' ': ' '
-#}
-#
-#
-#def text_to_morse(text: str) -> str:
-#    morse_output = []
-#
-#    for char in text.upper():
-#        if char in MORSE_CODE_DICT:
-#            morse_output.append(MORSE_CODE_DICT[char])
-#        elif char == ' ':
-#            morse_output.append('  ')  # word spacing
-#        else:
-#            continue  # ignore unknown chars
-#
-#    return ' '.join(morse_output)
-#
-#
+MORSE_CODE_DICT = {
+    'A': ':3', 'B': '3:::', 'C': '3:3:', 'D': '3::', 'E': ':',
+    'F': '::3:', 'G': '33:', 'H': '::::', 'I': '::', 'J': ':333',
+    'K': '3.3', 'L': '.3..', 'M': '33', 'N': '3.', 'O': '333',
+    'P': ':33:', 'Q': '33:3', 'R': ':3:', 'S': ':::', 'T': '3',
+    'U': '..3', 'V': '...3', 'W': '.33', 'X': '3..3', 'Y': '3.33',
+    'Z': '33::', '1': ':3333', '2': '::333', '3': ':::33', '4': '::::3',
+    '5': ':::::', '6': '3::::', '7': '33:::', '8': '333::', '9': '3333:',
+    '0': '33333', ',': '33::33', '.': ':3:3:3', '?': '::33::', '/': '3::3:',
+    '-': '3::::3', '(': '3:33:', ')': '3:33:3', ' ': ' '
+}
+
+
+def text_to_morse(text: str) -> str:
+    morse_output = []
+
+    for char in text.upper():
+        if char in MORSE_CODE_DICT:
+            morse_output.append(MORSE_CODE_DICT[char])
+        elif char == ' ':
+            morse_output.append('  ')  # word spacing
+        else:
+            continue  # ignore unknown chars
+
+    return ' '.join(morse_output)
+
+
 #@bot.tree.command(name="twinktext", description=":3")
 #async def morse(interaction: discord.Interaction, text: str):
 #
@@ -680,32 +680,24 @@ async def timeout(interaction: discord.Interaction, user: discord.User):
         await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
         return await asyncio.sleep(5.2)
 
-
 @bot.tree.command(name="self_roulette", description="1 in 6 Chance to timeout yourself")
-async def self_timeout(interaction: discord.Interaction):
-    if interaction.guild is None:
-        return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
+async def timeout(ctx):
 
-    member = interaction.guild.get_member(interaction.user)
+    member = ctx.guild.get_member(ctx.user)
     if member is None:
         try:
-            member = await interaction.guild.fetch_member(member.id)
+            member = await ctx.guild.fetch_member(ctx.user)
         except discord.NotFound:
-            return await interaction.response.send_message("user not in server", ephemeral=True)
+            return await ctx.response.send_message("user not in server", ephemeral=True)
 
-    command_author = interaction.user
-    if not command_author.guild_permissions.ban_members:
-        return await interaction.response.send_message("You dont have perms", ephemeral=True)
-    if member.guild_permissions.administrator:
-        return await interaction.response.send_message("my guy its an admin", ephemeral=True)
 
     if random.randint(1, 6) == 1:
-        await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
+        await ctx.response.send_message("", ephemeral=False, file=discord.File(DED))
         await asyncio.sleep(8)
         return await member.timeout(datetime.timedelta(minutes=1), reason="BANG")
 
     else:
-        await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
+        await ctx.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
         return await asyncio.sleep(5.2)
 
 
