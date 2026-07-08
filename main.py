@@ -618,10 +618,7 @@ async def confess(interaction: discord.Interaction):
     cfg = get_guild_config(interaction.guild_id)
     if not cfg["confess_enabled"]:
         return await interaction.response.send_message("❌ This command is disabled.", ephemeral=True)
-    if random.randint(1, 100):
-        await interaction.response.send_message(THE_ENTIRE_BEE_MOVIE_SCRIPT)
-    else:
-        await interaction.response.send_message(CONFESS_TEXT)
+    await interaction.response.send_message(CONFESS_TEXT)
 
 
 @bot.tree.context_menu(name="Report Bug")
