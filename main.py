@@ -131,7 +131,7 @@ fortunes = {
     49: "Obama Won't Care",
     50: "Obama Will Care"
 }
-
+balls = 0
 datetime.datetime(2026, 8, 9) - datetime.datetime.now()
 datetime.timedelta(2, 5274, 16000)
 td = datetime.datetime(2026, 8, 9) - datetime.datetime.now()
@@ -286,6 +286,7 @@ TWINKFACE_PATTERNS = [build_unicode_face_pattern(f, strict=True) for f in TWINK_
 #what does this do i dont remember making this shit. whenever i remove it walter crashes what the fuck
 TARGET_EMOJI_ID = "1437269389467586601"
 EMOJI_ID_REGEX = re.compile(rf"<a?:\w+:{TARGET_EMOJI_ID}>")
+#it runs fine without it but the comment is too funny to remove
 
 #triggers
 PEPPER = [
@@ -303,10 +304,10 @@ ATDOOR = [
 ]
 WALTER = [
     "walter", "waltuh", "mr white", "mista white", "waltussy",
-]
-ASS = [
-    "ass", "tiddies",
-]
+#]
+#ASS = [
+#    "ass", "tiddies",
+#]
 
 
 #msg handler
@@ -500,35 +501,35 @@ async def on_ready():
 
 # ============================================================
 #                  twinktext
-
-
-MORSE_CODE_DICT = {
-    'A': ':3', 'B': '3:::', 'C': '3:3:', 'D': '3::', 'E': ':',
-    'F': '::3:', 'G': '33:', 'H': '::::', 'I': '::', 'J': ':333',
-    'K': '3.3', 'L': '.3..', 'M': '33', 'N': '3.', 'O': '333',
-    'P': ':33:', 'Q': '33:3', 'R': ':3:', 'S': ':::', 'T': '3',
-    'U': '..3', 'V': '...3', 'W': '.33', 'X': '3..3', 'Y': '3.33',
-    'Z': '33::', '1': ':3333', '2': '::333', '3': ':::33', '4': '::::3',
-    '5': ':::::', '6': '3::::', '7': '33:::', '8': '333::', '9': '3333:',
-    '0': '33333', ',': '33::33', '.': ':3:3:3', '?': '::33::', '/': '3::3:',
-    '-': '3::::3', '(': '3:33:', ')': '3:33:3', ' ': ' '
-}
-
-
-def text_to_morse(text: str) -> str:
-    morse_output = []
-
-    for char in text.upper():
-        if char in MORSE_CODE_DICT:
-            morse_output.append(MORSE_CODE_DICT[char])
-        elif char == ' ':
-            morse_output.append('  ')  # word spacing
-        else:
-            continue  # ignore unknown chars
-
-    return ' '.join(morse_output)
-
-
+#
+#
+#MORSE_CODE_DICT = {
+#    'A': ':3', 'B': '3:::', 'C': '3:3:', 'D': '3::', 'E': ':',
+#    'F': '::3:', 'G': '33:', 'H': '::::', 'I': '::', 'J': ':333',
+#    'K': '3.3', 'L': '.3..', 'M': '33', 'N': '3.', 'O': '333',
+#    'P': ':33:', 'Q': '33:3', 'R': ':3:', 'S': ':::', 'T': '3',
+#    'U': '..3', 'V': '...3', 'W': '.33', 'X': '3..3', 'Y': '3.33',
+#    'Z': '33::', '1': ':3333', '2': '::333', '3': ':::33', '4': '::::3',
+#    '5': ':::::', '6': '3::::', '7': '33:::', '8': '333::', '9': '3333:',
+#    '0': '33333', ',': '33::33', '.': ':3:3:3', '?': '::33::', '/': '3::3:',
+#    '-': '3::::3', '(': '3:33:', ')': '3:33:3', ' ': ' '
+#
+#
+#
+#ef text_to_morse(text: str) -> str:
+#   morse_output = []
+#
+#   for char in text.upper():
+#       if char in MORSE_CODE_DICT:
+#           morse_output.append(MORSE_CODE_DICT[char])
+#       elif char == ' ':
+#           morse_output.append('  ')  # word spacing
+#       else:
+#           continue  # ignore unknown chars
+#
+#   return ' '.join(morse_output)
+#
+#
 #@bot.tree.command(name="twinktext", description=":3")
 #async def morse(interaction: discord.Interaction, text: str):
 #
@@ -655,6 +656,8 @@ async def ban(interaction: discord.Interaction, user: discord.User):
 
 @bot.tree.command(name="soft_roulette", description="1 in 6 Chance to timeout someone")
 async def timeout(interaction: discord.Interaction, user: discord.User):
+
+
     if interaction.guild is None:
         return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
 
@@ -671,33 +674,40 @@ async def timeout(interaction: discord.Interaction, user: discord.User):
     if member.guild_permissions.administrator:
         return await interaction.response.send_message("my guy its an admin", ephemeral=True)
 
-    if random.randint(1, 6) == 1:
+    if random.randint((1), 6) == 1:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
         await asyncio.sleep(8)
+
         return await member.timeout(datetime.timedelta(minutes=1), reason="BANG")
 
     else:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
-        return await asyncio.sleep(5.2)
 
+        return await asyncio.sleep(5.2)
+#penis
 @bot.tree.command(name="self_roulette", description="1 in 6 Chance to timeout yourself")
 async def timeout(ctx):
 
-    member = ctx.guild.get_member(ctx.user)
+    member = ctx.guild.get_member(ctx.user.id)
     if member is None:
         try:
-            member = await ctx.guild.fetch_member(ctx.user)
+            member = await ctx.guild.fetch_member(ctx.user.id)
         except discord.NotFound:
             return await ctx.response.send_message("user not in server", ephemeral=True)
 
-
-    if random.randint(1, 6) == 1:
+    global balls
+    cum = balls - 6
+    if cum < 0:
+        cum = 0
+    if random.randint((1+cum), 6) == 6:
         await ctx.response.send_message("", ephemeral=False, file=discord.File(DED))
-        await asyncio.sleep(8)
+        await asyncio.sleep(7.2)
+        balls = 0
         return await member.timeout(datetime.timedelta(minutes=1), reason="BANG")
 
     else:
         await ctx.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
+        balls = balls + 1
         return await asyncio.sleep(5.2)
 
 
@@ -718,7 +728,7 @@ async def whatsnew(interaction: discord.Interaction):
 
 print("starting walter...")
 print(dectcount)
-bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GiwoM3.tpeNcIb6eDPZZe7tJ2TNeOerqgViu8lNwVkgPM")
+bot.run("MTUxMzk4NzY4NDQ0Njc2NTA3Nw.GLJzSS.Ghmh7rmKTZDC0w5y0t0d0P6T-CbTKh77pYc2Dw")
 
 #i am aware this nearly doubles the file size and does nothing. dont try to remove it.
 theentirebeemoviescript = {"""According to all known laws of aviation, there is no way a bee should be able to fly. 
