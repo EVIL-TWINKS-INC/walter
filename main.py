@@ -302,11 +302,11 @@ ATDOOR = [
     "yo mista white someones at the door", "someones at the door",
 ]
 WALTER = [
-    "walter", "waltuh", "mr white", "mista white", "waltussy",
+    "walter", "waltuh", "mr white", "mista white", "waltussy", "waltitty", "waltiddy"
 ]
-ASS = [
-    "ass", "tiddies",
-]
+#ASS = [
+#    "ass", "tiddies",
+#]
 
 
 #msg handler
