@@ -351,7 +351,7 @@ async def handle_message(message):
             return
 
     # Faces detection
-    for pattern in FACE_PATTERNS:
+    for pattern in FACE_PATTERNS and TWINKFACE_PATTERNS:
         rarityInt = random.randint(1, 100)
         if rarityInt <= 65:  #Common 65%
             walterImg = random.choice(os.listdir(COMMON_DIR))
@@ -379,97 +379,23 @@ async def handle_message(message):
             await add_detection()
             return
 
-    for pattern in TWINKFACE_PATTERNS:
-        if pattern.search(content):
-            gif_path = random.choice(os.listdir(GIF_DIR))
-            gif_path = os.path.join(GIF_DIR, gif_path)
-            embed = discord.Embed(
-                description=f"{message.author.mention} TWINK DETECTED",
-                color=discord.Color.purple()
-            )
-            embed.set_image(
-                url=f"attachment://{os.path.basename(gif_path)}"
-            )
-            await message.reply(file=discord.File(gif_path), embed=embed)
-            user_cooldowns[message.guild.id][message.author.id] = now
-            await add_detection()
-            return
-
-    #    if EMOJI_ID_REGEX.search(content):
-    #        if random.randint(1, 500) == 1:
-    #            await message.reply(
-    #                f"{message.author.mention} TWINK DETECTED",
-    #                file=discord.File(WALTERBALLS_IMG)
-    #            )
-    #            user_cooldowns[message.guild.id][message.author.id] = now
-    #            await add_detection()
-    #            return
-    #        else:
-    #            await message.reply(
-    #                f"{message.author.mention} TWINK DETECTED",
-    #                file=discord.File(BALLS_IMG)
-    #            )
-    #            user_cooldowns[message.guild.id][message.author.id] = now
-    #            await add_detection()
-    #            return
-
-    for word in ATDOOR:
-        if random.randint(1, 1) == 1:
+    for word in WALTER:
+        if random.randint(1, 3) == 1:
             if has_word(content, word):
-                await message.reply("who is it")
+                await message.reply("im waltering it til i white")
                 user_cooldowns[message.guild.id][message.author.id] = now
                 return
 
-    for word in WALTER:
-        roll = random.randint(0, 2)
-        say = ["im waltering it til i white", "Straight waltering it rn", "Im waltering and im gonna white"]
-        if has_word(content, word):
-            await message.reply(say[roll])
-            user_cooldowns[message.guild.id][message.author.id] = now
-            return
-
-    #    for word in ASS:
-    #        if has_word(content, word):
-    #            await message.reply("where")
-    #            user_cooldowns[message.guild.id][message.author.id] = now
-    #            return
-
     # stale?
     for word in PEPPER:
-        if has_word(content, word):
-            await message.reply(
-                f"{message.author.mention} i like dr pepper",
-                file=discord.File(DRPEPPER_IMG)
-            )
-            user_cooldowns[message.guild.id][message.author.id] = now
-            return
-
-
-#i fixed it but im leaving this comment in because its funny
-#FIX THIS ASAP ASHLEY WANTS IT REMOVED BEE HAS THE REPLACEMENT MESSSAGE ENSURE IT IS ALSO SET TO FOR WORD
-#  if content == "soda":
-#      await message.reply(
-#         f"{message.author.mention} i like dr pepper",
-#        file=discord.File(DRPEPPER_IMG)
-#   )
-#  user_cooldowns[message.guild.id][message.author.id] = now
-#      return
-
-########################################
-#DROOLING OVER DICK CODE
-
-# Trigger word response
-# for word in TRIGGER_WORDS:
-#    if word in content:
-#      r1 = random.randint (1,2)
-#    if r1 == 1:
-#      await message.reply("yummy")
-#    user_cooldowns[message.guild.id][message.author.id] = now
-#  return
-#  else:
-#    await message.reply("\U0001F924")
-#  user_cooldowns[message.guild.id][message.author.id] = now
-#  return
+        if random.randint(1, 2) == 1:
+            if has_word(content, word):
+                await message.reply(
+                    f"{message.author.mention} i like dr pepper",
+                    file=discord.File(DRPEPPER_IMG)
+                )
+                user_cooldowns[message.guild.id][message.author.id] = now
+                return
 
 
 # ============================================================
@@ -647,8 +573,8 @@ async def bug_context(interaction: discord.Interaction, message: discord.Message
     await interaction.response.send_message("Bug logged — thank you :3", ephemeral=True)
 
 
-@bot.tree.command(name="russian_roulette", description="1 in 6 Chance to ban someone")
-async def ban(interaction: discord.Interaction, user: discord.User):
+@bot.tree.command(name="russian_roulette", description="1 in 6 Chance to timeout someone for 1 day")
+async def day_timeout(interaction: discord.Interaction, user: discord.User):
     if interaction.guild is None:
         return await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
 
@@ -668,15 +594,15 @@ async def ban(interaction: discord.Interaction, user: discord.User):
     if random.randint(1, 6) == 1:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(DED))
         await asyncio.sleep(8)
-        return await member.ban(reason="BANG")
+        return await member.timeout(datetime.timedelta(days=1), reason="BANG")
 
     else:
         await interaction.response.send_message("", ephemeral=False, file=discord.File(ALIVE))
         return await asyncio.sleep(5.2)
 
 
-@bot.tree.command(name="soft_roulette", description="1 in 6 Chance to timeout someone")
-async def timeout(interaction: discord.Interaction, user: discord.User):
+@bot.tree.command(name="soft_roulette", description="1 in 6 Chance to timeout someone for 1 Minute")
+async def short_timeout(interaction: discord.Interaction, user: discord.User):
 
 
     if interaction.guild is None:
@@ -707,7 +633,7 @@ async def timeout(interaction: discord.Interaction, user: discord.User):
         return await asyncio.sleep(5.2)
 #penis
 @bot.tree.command(name="self_roulette", description="1 in 6 Chance to timeout yourself")
-async def timeout(ctx):
+async def self_timeout(ctx):
 
     member = ctx.guild.get_member(ctx.user.id)
     if member is None:
