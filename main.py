@@ -586,7 +586,7 @@ async def day_timeout(interaction: discord.Interaction, user: discord.User):
             return await interaction.response.send_message("user not in server", ephemeral=True)
 
     command_author = interaction.user
-    if not command_author.guild_permissions.ban_members:
+    if not command_author.guild_permissions.mute_members:
         return await interaction.response.send_message("You dont have perms", ephemeral=True)
     if member.guild_permissions.administrator:
         return await interaction.response.send_message("my guy its an admin", ephemeral=True)
